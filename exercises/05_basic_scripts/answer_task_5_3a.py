@@ -11,7 +11,6 @@ VLANа или списка VLANов:
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 То есть эту задачу можно решить без использования условия if и циклов for/while.
 """
-
 access_template = [
     "switchport mode access",
     "switchport access vlan {}",
@@ -19,7 +18,6 @@ access_template = [
     "spanning-tree portfast",
     "spanning-tree bpduguard enable",
 ]
-
 trunk_template = [
     "switchport trunk encapsulation dot1q",
     "switchport mode trunk",
