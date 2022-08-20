@@ -40,3 +40,15 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+output = "{:10} {:20} {}"
+sort_list = []
+with open("CAM_table.txt", "r") as f:
+    for line in f:
+        if "DYNAMIC" in line:
+            str_list = line.split()
+            sort_list.append(str_list)
+for line in sort_list:
+    line[0] = int(line[0])
+sort_list = sorted(sort_list   )
+for line in sort_list:
+    print("{:<10} {:20} {}".format(line[0], line[1], line[3]))

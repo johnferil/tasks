@@ -20,21 +20,10 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-output = "{:10} {:20} {}"
-sort_list = []
 
-with open("CAM_table.txt", "r") as f:
-    for line in f:
-        if "DYNAMIC" in line:
-            str_list = line.split()
-            sort_list.append(str_list)
-            #print("{:10} {:20} {}".format(str_list[0], str_list[1], str_list[3]))
-            #print(output.format(str_list[0], str_list[1], str_list[3])
-for line in sort_list:
-    line[0] = int(line[0])
-sort_list = sorted(sort_list   )
-#print(sort_list)
-for line in sort_list:
-    print("{:<10} {:20} {}".format(line[0], line[1], line[3]))
-
-
+with open("CAM_table.txt") as conf:
+    for line in conf:
+        words = line.split()
+        if words and words[0].isdigit():
+            vlan, mac, _, interface = words
+            print(f"{vlan:9}{mac:20}{interface}")

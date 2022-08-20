@@ -16,19 +16,14 @@
 
 """
 from sys import argv
+
 ignore = ["duplex", "alias", "configuration"]
 
-source_file = argv[1]
-dest_file = argv[2]
+src_file, dst_file = argv[1], argv[2]
 
-with open(source_file, "r") as f:
-    with open (dest_file, "w") as f_dest:
-        for line in f:
-            if not line.lstrip().startswith('!'):
-                a = 0
-                for ign in ignore:
-                    if not (line.find(ign)+1):
-                        a +=1
-                    if a == len(ignore):
-                        f_dest.write(line)
-
+with open(src_file) as src, open(dst_file, 'w') as dst:
+    for line in src:
+        words = line.split()
+        words_intersect = set(words) & set(ignore)
+        if not line.startswith("!") and not words_intersect:
+            dst.write(line)
